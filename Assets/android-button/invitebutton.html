@@ -1,0 +1,121 @@
+<style>
+body {font-family: "Roboto", sans-serif;}
+
+    .android-btn {
+  display: inline-block;
+  font-weight: 300;
+  font-size: 0.9vw;
+  background: #000000;
+  color: rgb(255, 255, 255);
+  height: 36px;
+  text-align: center;
+  line-height: 36px;
+  text-transform: uppercase;
+  padding: 0 60px;
+  border-radius: 1px;
+  position: relative;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.2s ease-in;
+  -webkit-transition: all 0.2s ease-in;;
+}
+
+.android-btn.active {
+  background: #292828;
+}
+
+.android-btn:after {
+content: 'INVITE';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+}
+
+.active:before {
+  content: "";
+  position: absolute;
+  top: -32px; 
+  left: calc(50% - 50px);
+  width: 100px;
+  height: 100px;
+  background-color: #54555a;
+  border-radius: 100%;  
+  
+  -webkit-animation: scaleout 0.3s 1 ease-out;
+  animation: scaleout 0.3s 1 ease-out;
+  
+  opacity: 0;
+}
+
+.ink {
+  background: none;
+  color: #1a1a1a;
+}
+
+.ink.active {
+  background: #E0E0E0;
+}
+
+.ink.active:before {
+  background: #BDBDBD;
+}
+
+@-webkit-keyframes scaleout {
+  0% { 
+    opacity: 1;
+    -webkit-transform: scale(0.0) 
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: scale(1.0);
+    opacity: 0;
+  }
+}
+
+@keyframes scaleout {
+  0% { 
+    opacity: 1;
+    transform: scale(0.0);
+    -webkit-transform: scale(0.0);
+  } 100% {
+    transform: scale(1.0);
+    -webkit-transform: scale(1.0);
+    opacity: 0;
+  }
+}
+</style>
+
+<div id="button" class="android-btn"></div>
+
+<script>
+
+var button = document.getElementById('button'),
+    button2 = document.getElementById('button2');
+
+button.addEventListener('click', function () {
+  this.setAttribute('class', 'android-btn active');
+  
+  var self = this;
+  setTimeout(function () {
+    self.removeAttribute('class', 'active');
+    self.setAttribute('class', 'android-btn');
+  }, 300)
+});
+
+button2.addEventListener('click', function () {
+  this.setAttribute('class', 'android-btn ink active');
+  
+  var self = this;
+  setTimeout(function () {
+    self.removeAttribute('class', 'active');
+    self.setAttribute('class', 'android-btn ink');
+  }, 300)
+});
+
+</script>
